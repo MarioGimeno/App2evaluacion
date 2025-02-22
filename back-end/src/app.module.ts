@@ -3,9 +3,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/module/users.module';
-import { ProductsModule } from './products/products.module';
 import { validationSchema } from './config/validate';
+import { CuidadoresModule } from './cuidadores/cuidadores.module';
+import { CategoriaModule } from './categoria/categoria.module';
 import config from './config/config';
+import { ResenaModule } from './resena/resena.module';
 
 @Module({
   imports: [
@@ -16,8 +18,8 @@ import config from './config/config';
       validationSchema,
     }),
     DatabaseModule, // Importa aquí tu DatabaseModule
-    UsersModule,
-    ProductsModule,
+    UsersModule, CuidadoresModule, CategoriaModule, ResenaModule,
   ],
+  controllers: [],
 })
 export class AppModule {}

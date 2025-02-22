@@ -1,0 +1,260 @@
+
+INSERT INTO cuidador (
+  nombre, 
+  direccion, 
+  telefono, 
+  "precioPorHora", 
+  disponibilidad, 
+  "urlImagen", 
+  descripcion, 
+  experiencia, 
+  rating, 
+  certificaciones, 
+    "horarioAtencion"
+)
+VALUES (
+  'Carlos Gómez', 
+  'Plaza de San Bruno, Zaragoza', 
+  '656458819', 
+  15.50, 
+  'Lunes a Viernes', 
+  'https://app2evaluacion.s3.us-east-1.amazonaws.com/cuidadores/png-transparent-man-male-facial-hair-dentistry-man-people-tartan-plaid-thumbnail.png', 
+  'Cuidador con amplia experiencia en cuidado infantil y de adultos mayores, comprometido con ofrecer una atención integral y personalizada. Ha desarrollado habilidades para gestionar rutinas diarias, actividades lúdicas y educativas para niños, así como para brindar asistencia en la movilidad, supervisión de medicamentos y apoyo emocional a adultos mayores. Su enfoque se centra en crear un ambiente seguro, estimulante y de confianza, adaptándose a las necesidades específicas de cada persona. Además, se actualiza continuamente en las mejores prácticas del sector, garantizando así una atención de alta calidad y fomentando la autonomía y el bienestar tanto en niños como en adultos mayores.', 
+  5, 
+  4.5, 
+  'Curso de Cuidado Integral', 
+  '09:00-17:00'
+);
+INSERT INTO cuidador (
+  nombre, 
+  direccion, 
+  telefono, 
+  "precioPorHora", 
+  disponibilidad, 
+  "urlImagen", 
+  descripcion, 
+  experiencia, 
+  rating, 
+  certificaciones, 
+    "horarioAtencion"
+)
+VALUES (
+  'Ana Martínez', 
+  'Avenida Navarra, Zaragoza', 
+  '657183223', 
+  18.00, 
+  'Lunes a Sábado', 
+  'https://app2evaluacion.s3.us-east-1.amazonaws.com/cuidadores/21964348-hermosas-mujeres-j%C3%B3venes-retrato-de-la-mujer-joven-alegre-sonriente.jpg', 
+  'Profesional altamente especializada en el cuidado de personas mayores, con un enfoque particular en pacientes con Alzheimer. Cuenta con amplia experiencia en la atención personalizada, aplicando métodos y estrategias que estimulan cognitivamente y favorecen el bienestar emocional de los pacientes. Su formación y práctica se centran en adaptar el entorno y las actividades diarias para maximizar la autonomía y seguridad, proporcionando cuidados integrales que incluyen el manejo de la medicación, supervisión constante y apoyo en las actividades básicas. Además, ofrece asesoramiento continuo a las familias, promoviendo un ambiente de comprensión y acompañamiento durante todas las etapas del proceso de atención.
+', 
+  7, 
+  4.7, 
+  'Certificación en Alzheimer Care', 
+  '08:00-16:00'
+);
+INSERT INTO cuidador (
+  nombre, 
+  direccion, 
+  telefono, 
+  "precioPorHora", 
+  disponibilidad, 
+  "urlImagen", 
+  descripcion, 
+  experiencia, 
+  rating, 
+  certificaciones, 
+    "horarioAtencion"
+)
+VALUES (
+  'Lucía Rodríguez', 
+  'Plaza España, Zaragoza', 
+  '668983423', 
+  16.00, 
+  'Martes a Domingo', 
+  'https://app2evaluacion.s3.us-east-1.amazonaws.com/cuidadores/57.webp', 
+  'Cuidadora comprometida y con sólida experiencia en el cuidado de niños y adolescentes, que se destaca por crear ambientes seguros y estimulantes para el desarrollo integral de cada menor. Su labor se centra en promover actividades lúdicas y educativas que fomenten la creatividad y la socialización, al mismo tiempo que asegura una supervisión constante y adaptada a las necesidades individuales de cada etapa del crecimiento. Con un enfoque orientado a la atención personalizada, mantiene una comunicación abierta y colaborativa con las familias, garantizando que tanto el bienestar físico como emocional de los niños y adolescentes sean siempre una prioridad.', 
+  4, 
+  4.3, 
+  'Curso de Pediatría', 
+  '10:00-18:00'
+);
+INSERT INTO cuidador (
+  nombre, 
+  direccion, 
+  telefono, 
+  "precioPorHora", 
+  disponibilidad, 
+  "urlImagen", 
+  descripcion, 
+  experiencia, 
+  rating, 
+  certificaciones, 
+    "horarioAtencion"
+)
+VALUES (
+  'Diego Pérez', 
+  'Avendida Cataluña, Zaragoza', 
+  '669311823', 
+  20.00, 
+  'Lunes a Viernes', 
+  'https://app2evaluacion.s3.us-east-1.amazonaws.com/cuidadores/ai-generated-portrait-of-handsome-smiling-young-man-with-folded-arms-isolated-free-png.webp', 
+  'Especialista en cuidado de adultos y rehabilitación, con amplia experiencia en la atención integral de pacientes. Se enfoca en diseñar planes de cuidado personalizados que abordan tanto las necesidades físicas como emocionales, favoreciendo la recuperación y la mejora de la calidad de vida. Posee sólidos conocimientos en terapias de rehabilitación, técnicas de fisioterapia y estrategias de recuperación funcional, lo que le permite colaborar de manera efectiva en equipos multidisciplinarios. Su enfoque integral se basa en evaluaciones constantes, seguimiento detallado y ajustes en el tratamiento, promoviendo la autonomía y la seguridad de cada paciente. Además, se mantiene actualizada en las últimas prácticas y avances en el área, garantizando la aplicación de métodos innovadores y basados en la evidencia.', 
+  6, 
+  4.6, 
+  'Diplomado en Rehabilitación', 
+  '09:00-17:00'
+);
+INSERT INTO cuidador (
+  nombre, 
+  direccion, 
+  telefono, 
+  "precioPorHora", 
+  disponibilidad, 
+  "urlImagen", 
+  descripcion, 
+  experiencia, 
+  rating, 
+  certificaciones, 
+    "horarioAtencion"
+)
+VALUES (
+  'María Fernández', 
+  'Plaza San Miguel, Zaragoza', 
+  '675834922', 
+  17.50, 
+  'Lunes a Sábado', 
+  'https://app2evaluacion.s3.us-east-1.amazonaws.com/cuidadores/istockphoto-1389348844-612x612.jpg', 
+  'Con amplia experiencia en el cuidado de personas con discapacidades.', 
+  8, 
+  4.8, 
+  'Curso de Cuidado para Discapacitados', 
+  '08:00-15:00'
+);
+INSERT INTO cuidador (
+  nombre, 
+  direccion, 
+  telefono, 
+  "precioPorHora", 
+  disponibilidad, 
+  "urlImagen", 
+  descripcion, 
+  experiencia, 
+  rating, 
+  certificaciones, 
+    "horarioAtencion"
+)
+VALUES (
+  'Laura García', 
+  'Avenida Madrid, Zaragoza', 
+  '678594321', 
+  16.50, 
+  'Lunes a Viernes', 
+  'https://app2evaluacion.s3.us-east-1.amazonaws.com/cuidadores/pexels-photo-3992656.jpg', 
+  'Especializada en cuidado infantil y educación temprana.', 
+  5, 
+  4.4, 
+  'Certificación en Educación Infantil', 
+  '09:00-16:00'
+);
+INSERT INTO cuidador (
+  nombre, 
+  direccion, 
+  telefono, 
+  "precioPorHora", 
+  disponibilidad, 
+  "urlImagen", 
+  descripcion, 
+  experiencia, 
+  rating, 
+  certificaciones, 
+    "horarioAtencion"
+)
+VALUES (
+  'Sofía López', 
+  'Plaza Europa, Zaragoza', 
+  '633456789', 
+  19.00, 
+  'Martes a Domingo', 
+  'https://app2evaluacion.s3.us-east-1.amazonaws.com/cuidadores/png-clipart-beautiful-models-model-woman.png', 
+  'Cuidadora con formación en salud y bienestar.', 
+  6, 
+  4.5, 
+  'Diplomado en Bienestar y Salud', 
+  '10:00-18:00'
+);
+INSERT INTO cuidador (
+  nombre, 
+  direccion, 
+  telefono, 
+  "precioPorHora", 
+  disponibilidad, 
+  "urlImagen", 
+  descripcion, 
+  experiencia, 
+  rating, 
+  certificaciones, 
+  "horarioAtencion"
+)
+VALUES (
+  'Laura Fernandez Rodriguez', 
+  'Paseo Sagasta, Zaragoza', 
+  '685734592', 
+  18.50, 
+  'Lunes a Viernes', 
+  'https://app2evaluacion.s3.us-east-1.amazonaws.com/cuidadores/png-transparent-graphy-happiness-happy-man-man-tshirt-child-people-thumbnail.png', 
+  'Profesional altamente capacitado en el cuidado de niños y el apoyo integral a las familias, con amplia experiencia en crear ambientes seguros y afectuosos. Se especializa en fomentar el desarrollo emocional y educativo de los niños, gestionando actividades lúdicas y educativas adaptadas a cada edad, y coordinando la rutina diaria de los hogares. Su compromiso se traduce en un enfoque integral que atiende tanto las necesidades específicas de los niños como las dinámicas familiares, promoviendo la confianza y el bienestar en cada situación.', 
+  7, 
+  4.7, 
+  'Certificación en Primeros Auxilios', 
+  '08:30-17:30'
+);
+-- Crear la tabla de días de la semana
+CREATE TABLE dias_semanas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(20) NOT NULL
+);
+
+-- Asignar dos categorías al cuidador con id = 1
+INSERT INTO cuidador_categoria (cuidador_id, categoria_id) VALUES (1, 1);
+INSERT INTO cuidador_categoria (cuidador_id, categoria_id) VALUES (1, 2);
+
+-- Asignar dos categorías al cuidador con id = 2
+INSERT INTO cuidador_categoria (cuidador_id, categoria_id) VALUES (2, 3);
+INSERT INTO cuidador_categoria (cuidador_id, categoria_id) VALUES (2, 4);
+INSERT INTO dia_semana (id, nombre) VALUES (1, 'Lunes');
+INSERT INTO dia_semana (id, nombre) VALUES (2, 'Martes');
+INSERT INTO dia_semana (id, nombre) VALUES (3, 'Miércoles');
+INSERT INTO dia_semana (id, nombre) VALUES (4, 'Jueves');
+INSERT INTO dia_semana (id, nombre) VALUES (5, 'Viernes');
+INSERT INTO dia_semana (id, nombre) VALUES (6, 'Sábado');
+INSERT INTO dia_semana (id, nombre) VALUES (7, 'Domingo');
+-- Para el cuidador con id = 1, asignamos lunes (1), miércoles (3) y viernes (5)
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (1, 1);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (1, 3);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (1, 5);
+
+-- Para el cuidador con id = 2, asignamos martes (2), jueves (4) y sábado (6)
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (2, 2);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (2, 4);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (2, 6);
+
+-- Para el cuidador con id = 3, asignamos lunes (1), miércoles (3), viernes (5) y domingo (7)
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (3, 1);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (3, 3);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (3, 5);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (3, 7);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (4, 1);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (4, 2);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (4, 3);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (5, 4);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (5, 5);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (5, 6);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (6, 2);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (6, 3);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (6, 7);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (7, 1);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (7, 5);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (7, 6);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (8, 3);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (8, 4);
+INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (8, 7);

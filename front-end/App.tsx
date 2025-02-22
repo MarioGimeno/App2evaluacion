@@ -4,45 +4,55 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ListadoScreen from './src/screens/listado.screen';
 import DetalleScreen from './src/screens/detalle.sreen';
-import Header from './src/componentes/header'; // Importa tu header custom
-import { ElementoDTO } from './src/dto/elemento.dto';
+import LoginScreen from './src/screens/login.screen';
+import SplashScreen from './src/screens/SplashScreen';
+import RegistroScreen from './src/screens/RegistroScreen'; // Importa la pantalla de registro
+import { CuidadorModel } from '../front-end/src/model/CuidadorModel';
+import { AuthProvider } from './src/auth/AuthContext';
 
 export type RootStackParamList = {
+  Splash: undefined;
   Listado: undefined;
-  Detalle: { elemento: ElementoDTO };
+  Detalle: { elemento: CuidadorModel };
+  Login: undefined;
+  Registro: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
+
 const App: React.FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        id={undefined} // Se añade para cumplir con el tipo requerido
-        initialRouteName="Listado"
-        screenOptions={{
-          // Se usa tu header custom en todas las pantallas
-          header: () => (
-            <Header
-              username="Usuario"
-              onPress={() => console.log("Header pressed")}
-            />
-          ),
-        }}
-      >
-        <Stack.Screen 
-          name="Listado" 
-          component={ListadoScreen} 
-          options={{ title: 'Listado de Elementos' }}
-        />
-        <Stack.Screen 
-          name="Detalle" 
-          component={DetalleScreen} 
-          options={{ title: 'Ficha Descriptiva' }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+        id={undefined}
+          initialRouteName="Splash"
+          screenOptions={{ headerShown: false }} // Quita el header globalmente
+        >
+          <Stack.Screen 
+            name="Splash" 
+            component={SplashScreen} 
+          />
+          <Stack.Screen 
+            name="Listado" 
+            component={ListadoScreen} 
+          />
+          <Stack.Screen 
+            name="Detalle" 
+            component={DetalleScreen} 
+          />
+          <Stack.Screen 
+            name="Login" 
+            component={LoginScreen} 
+          />
+          <Stack.Screen 
+            name="Registro" 
+            component={RegistroScreen} 
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthProvider>
   );
 };
-
 
 export default App;

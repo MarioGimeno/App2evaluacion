@@ -1,48 +1,41 @@
-// src/components/FooterNavigation.tsx
-import React, { useState, useRef } from 'react';
-import { View, TouchableOpacity, StyleSheet, Animated, Easing } from 'react-native';
+import React from 'react';
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { useAuth } from '../auth/AuthContext';
 
 const FooterNavigation: React.FC = () => {
-  const [expanded, setExpanded] = useState(false);
-  const animationHeight = useRef(new Animated.Value(60)).current; // Altura inicial
+  const { user } = useAuth();
+  const navigation = useNavigation();
 
-  const toggleFooter = () => {
-    Animated.timing(animationHeight, {
-      toValue: expanded ? 60 : 200, // Si está expandido, vuelve a 60; si no, expande a 200
-      duration: 300,
-      easing: Easing.inOut(Easing.ease),
-      useNativeDriver: false, // No se puede usar para 'height'
-    }).start();
-    setExpanded(!expanded);
+  const handleCentralPress = () => {
+    if (!user) {
+      navigation.navigate('Login');
+    } 
   };
 
   return (
-    // Al establecer pointerEvents según el estado, evitamos que el fondo bloquee toques.
-    <Animated.View
-      style={[styles.footerContainer, { height: animationHeight }]}
-      pointerEvents={expanded ? 'auto' : 'box-none'}
-    >
-      {/* El botón toggle lo envolvemos en una vista con pointerEvents 'auto' para que siempre sea interactivo */}
-      <View style={styles.toggleButtonContainer} pointerEvents="auto">
-        <TouchableOpacity style={styles.toggleButton} onPress={toggleFooter}>
-          <Ionicons name={expanded ? "close" : "menu"} size={24} color="#fff" />
-        </TouchableOpacity>
-      </View>
-      {expanded && (
-        <View style={styles.optionsContainer}>
-          <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Buscar')}>
-            <Ionicons name="search" size={24} color="#fff" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Inicio')}>
-            <Ionicons name="home" size={24} color="#fff" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Configuración')}>
-            <Ionicons name="settings" size={24} color="#fff" />
-          </TouchableOpacity>
-        </View>
-      )}
-    </Animated.View>
+    <View style={styles.footerContainer}>
+      <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Home pressed')}>
+        <Ionicons name="home-outline" size={22} color="#fff" />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Ubicación pressed')}>
+        <Ionicons name="location-outline" size={22} color="#fff" />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.centralButton} onPress={handleCentralPress}>
+        {user && user.imageUrl ? (
+          <Image source={{ uri: user.imageUrl }} style={styles.userImage} />
+        ) : (
+          <Ionicons name="person-outline" size={30} color="#ff9900" />
+        )}
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Historial pressed')}>
+        <Ionicons name="time-outline" size={22} color="#fff" />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Configuración pressed')}>
+        <Ionicons name="settings-outline" size={22} color="#fff" />
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -51,34 +44,33 @@ export default FooterNavigation;
 const styles = StyleSheet.create({
   footerContainer: {
     position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: '#333',
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    alignItems: 'center',
-    paddingTop: 10,
-  },
-  toggleButtonContainer: {
-    // Esta vista garantiza que el botón toggle siempre reciba toques.
-    pointerEvents: 'auto',
-  },
-  toggleButton: {
-    width: 60,
+    bottom: 10,
+    left: 20,
+    right: 20,
     height: 60,
-    borderRadius: 30,
-    backgroundColor: '#555',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10,
-  },
-  optionsContainer: {
+    backgroundColor: '#ff9900',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    width: '80%',
+    alignItems: 'center',
+    borderRadius: 20,
   },
   optionButton: {
-    padding: 10,
+    padding: 8,
+  },
+  centralButton: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: -20,
+    borderWidth: 2,
+    borderColor: '#ff9900',
+  },
+  userImage: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
   },
 });
