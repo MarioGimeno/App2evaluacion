@@ -22,6 +22,7 @@ type DetalleScreenRouteProp = RouteProp<RootStackParamList, 'Detalle'>;
 
 // Tipamos la navegación para esta pantalla
 import { StackNavigationProp } from '@react-navigation/stack';
+import LazyYoutubePlayer from '../componentes/LazyYoutubePlayer';
 type DetalleScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Detalle'>;
 
 type Props = {
@@ -101,14 +102,7 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
         <Image source={require('../../assets/white-arrow-invertida.png')} style={styles.backIcon} />
       </TouchableOpacity>
 
-      {/* Reproductor de YouTube */}
-      <YoutubePlayer
-        height={250}
-        play={true}
-        videoId={elemento.source} // Asegúrate que 'elemento.source' contenga el ID del video de YouTube
-        onChangeState={event => console.log(event)}
-        onReady={() => console.log("El video de YouTube está listo")}
-      />
+      <LazyYoutubePlayer videoId={elemento.source} />
 
       {/* Imagen de perfil e icono de corazón */}
       <View style={styles.profileRow}>
@@ -239,7 +233,7 @@ const styles = StyleSheet.create({
   profileRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: -50,
+    marginTop: -80,
     marginHorizontal: 30,
     marginBottom: 10,
   },
@@ -275,7 +269,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     paddingHorizontal: 20,
-    marginBottom: 6,
+    marginBottom: 10,
   },
   titulo: {
     fontSize: 25,
@@ -289,13 +283,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   contratarButton: {
-    marginTop: 8,
+    marginTop:12,
     backgroundColor: '#ff9900',
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 25,
     alignSelf: 'center',
     width: '60%',
+    marginBottom: 10,
   },
   contratarText: {
     fontSize: 16,
@@ -305,7 +300,7 @@ const styles = StyleSheet.create({
   },
   aboutContainer: {
     paddingHorizontal: 20,
-    marginBottom: 30,
+    marginBottom: 10,
   },
   aboutTitle: {
     fontSize: 25,
@@ -362,7 +357,7 @@ const styles = StyleSheet.create({
   },
   addCommentContainer: {
     paddingHorizontal: 20,
-    marginBottom: 30,
+    marginBottom: 0,
   },
   addCommentTitle: {
     fontSize: 22,
