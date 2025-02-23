@@ -1,23 +1,45 @@
-// contratacion.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+// src/contracts/entity/contrataciones.entity.ts
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, JoinColumn } from 'typeorm';
 import { Usuario } from '../../users/entity/users.entity';
+import { Cuidador } from '../../cuidadores/entity/cuidadores.entity';
 
 @Entity()
 export class Contratacion {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'date' })
-  fechaContratacion: Date;
+  @Column('simple-array')
+  selectedDays: string[];
+
+  @Column({ type: 'timestamptz' })
+  startTime: Date;
+
+  @Column({ type: 'timestamptz' })
+  endTime: Date;
 
   @Column()
-  estado: string;
+  selectedCategory: string;
 
-  // Usuario que contrata (familia)
-  @ManyToOne(() => Usuario, user => user.contratacionesFamilia, { eager: true })
-  familia: Usuario;
+  @Column('float')
+  totalPrice: number;
 
-  // Usuario que es contratado (cuidador)
-  @ManyToOne(() => Usuario, user => user.contratacionesCuidador, { eager: true })
-  cuidador: Usuario;
+  @Column({ nullable: true })
+  instructions?: string;
+
+  @ManyToOne(() => Usuario, user => user.contrataciones)
+  usuario: Usuario;
+  
+  @Column({ nullable: true })
+  usuarioId: number;
+
+  @Column({ nullable: true })
+  cuidadorId: number;
+
+  // Relación con Cuidador. Al establecer "eager: true", cada vez que se consulte una contratación, se traerá el cuidador.
+  @ManyToOne(() => Cuidador, { eager: true })
+  @JoinColumn({ name: 'cuidadorId' })
+  cuidador: Cuidador;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

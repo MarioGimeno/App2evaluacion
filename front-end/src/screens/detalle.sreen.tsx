@@ -1,11 +1,12 @@
+// src/screens/detalle.screen.tsx
 import React, { useRef, useEffect, useState } from 'react';
-import { 
-  StyleSheet, 
-  View, 
-  Text, 
-  Image, 
-  ScrollView, 
-  Dimensions, 
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Dimensions,
   TouchableOpacity,
   TextInput
 } from 'react-native';
@@ -15,7 +16,12 @@ import { ResizeMode, Video } from 'expo-av';
 import { useAuth } from '../../src/auth/AuthContext';
 import { useResenaPresenter } from '../presenter/ResenaPresenter';
 
+// Declaramos el tipo de la ruta para esta pantalla
 type DetalleScreenRouteProp = RouteProp<RootStackParamList, 'Detalle'>;
+
+// Tipamos la navegación para esta pantalla
+import { StackNavigationProp } from '@react-navigation/stack';
+type DetalleScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Detalle'>;
 
 type Props = {
   route: DetalleScreenRouteProp;
@@ -26,7 +32,8 @@ const { width } = Dimensions.get('window');
 const DetalleScreen: React.FC<Props> = ({ route }) => {
   const { elemento } = route.params;
   const videoRef = useRef<Video>(null);
-  const navigation = useNavigation();
+  // Obtén navigation tipado dentro del componente
+  const navigation = useNavigation<DetalleScreenNavigationProp>();
   const { user } = useAuth();
 
   // Estado para guardar las reseñas actualizadas
@@ -34,7 +41,7 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
 
   // Orden de la semana
   const diasOrden = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
-  const diasOrdenados = elemento.dias && elemento.dias.length > 0 
+  const diasOrdenados = elemento.dias && elemento.dias.length > 0
     ? [...elemento.dias].sort((a, b) => diasOrden.indexOf(a.nombre) - diasOrden.indexOf(b.nombre))
     : [];
 
@@ -123,9 +130,19 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
             Días de atención: {diasOrdenados.map((dia: any) => dia.nombre).join(', ')}
           </Text>
         )}
-        <TouchableOpacity style={styles.contratarButton} onPress={() => console.log('Contratar pressed')}>
+        <TouchableOpacity
+          style={styles.contratarButton}
+          onPress={() => {
+            if (!user) {
+              navigation.navigate('Login');
+            } else {
+              navigation.navigate('Contratar', { cuidador: elemento });
+            }
+          }}
+        >
           <Text style={styles.contratarText}>Contratar</Text>
         </TouchableOpacity>
+
       </View>
 
       {/* Sección Acerca de */}
@@ -193,6 +210,7 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
 export default DetalleScreen;
 
 const styles = StyleSheet.create({
+  // Tus estilos existentes...
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -300,9 +318,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
     lineHeight: 22,
-    textAlign: 'justify', // Agregado para justificar el texto
+    textAlign: 'justify',
   },
-  
   commentsContainer: {
     paddingHorizontal: 20,
     marginBottom: 30,
@@ -338,7 +355,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#555',
     marginVertical: 5,
-    textAlign: 'justify', // Agregado para justificar el texto
+    textAlign: 'justify',
   },
   commentRating: {
     fontSize: 18,

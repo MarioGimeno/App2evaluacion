@@ -30,5 +30,7 @@ export class Usuario {
   contratacionesCuidador: any;
   
 
+  @OneToMany(() => Contratacion, contratacion => contratacion.usuario)
+  contrataciones: Contratacion[];
   // Otras relaciones, según tu modelo...
 }

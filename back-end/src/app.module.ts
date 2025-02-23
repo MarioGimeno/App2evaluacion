@@ -8,6 +8,7 @@ import { CuidadoresModule } from './cuidadores/cuidadores.module';
 import { CategoriaModule } from './categoria/categoria.module';
 import config from './config/config';
 import { ResenaModule } from './resena/resena.module';
+import { ContractModule } from './contrataciones/module/contrataciones.module';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { ResenaModule } from './resena/resena.module';
       validationSchema,
     }),
     DatabaseModule, // Importa aquí tu DatabaseModule
-    UsersModule, CuidadoresModule, CategoriaModule, ResenaModule,
+    UsersModule, CuidadoresModule, CategoriaModule, ResenaModule, ContractModule
   ],
   controllers: [],
 })

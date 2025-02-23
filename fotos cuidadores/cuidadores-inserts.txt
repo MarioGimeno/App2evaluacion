@@ -258,3 +258,5 @@ INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (7, 6);
 INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (8, 3);
 INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (8, 4);
 INSERT INTO cuidador_dia (cuidador_id, dia_semana_id) VALUES (8, 7);
+
+https://youtu.be/8WsoOuEC0Kw

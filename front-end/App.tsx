@@ -9,6 +9,8 @@ import SplashScreen from './src/screens/SplashScreen';
 import RegistroScreen from './src/screens/RegistroScreen'; // Importa la pantalla de registro
 import { CuidadorModel } from '../front-end/src/model/CuidadorModel';
 import { AuthProvider } from './src/auth/AuthContext';
+import ContratarScreen from './src/screens/ContratarScreen';
+import HistorialScreen from './src/screens/HistorialScreen';
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -16,6 +18,9 @@ export type RootStackParamList = {
   Detalle: { elemento: CuidadorModel };
   Login: undefined;
   Registro: undefined;
+  Contratar: { cuidador?: CuidadorModel; contract?: any } | undefined;
+  Historial: undefined;
+
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -48,6 +53,14 @@ const App: React.FC = () => {
           <Stack.Screen 
             name="Registro" 
             component={RegistroScreen} 
+          />
+          <Stack.Screen 
+            name="Contratar" 
+            component={ContratarScreen} 
+          />
+          <Stack.Screen 
+            name="Historial" 
+            component={HistorialScreen} 
           />
         </Stack.Navigator>
       </NavigationContainer>

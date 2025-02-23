@@ -11,7 +11,15 @@ const FooterNavigation: React.FC = () => {
   const handleCentralPress = () => {
     if (!user) {
       navigation.navigate('Login');
-    } 
+    }
+  };
+
+  const handleHistorialPress = () => {
+    if (!user) {
+      navigation.navigate('Login');
+    } else {
+      navigation.navigate('Historial');
+    }
   };
 
   return (
@@ -29,7 +37,7 @@ const FooterNavigation: React.FC = () => {
           <Ionicons name="person-outline" size={30} color="#ff9900" />
         )}
       </TouchableOpacity>
-      <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Historial pressed')}>
+      <TouchableOpacity style={styles.optionButton} onPress={handleHistorialPress}>
         <Ionicons name="time-outline" size={22} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.optionButton} onPress={() => console.log('Configuración pressed')}>
