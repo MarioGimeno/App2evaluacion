@@ -15,6 +15,7 @@ import { RootStackParamList } from '../../App';
 import { ResizeMode, Video } from 'expo-av';
 import { useAuth } from '../../src/auth/AuthContext';
 import { useResenaPresenter } from '../presenter/ResenaPresenter';
+import YoutubePlayer from 'react-native-youtube-iframe';
 
 // Declaramos el tipo de la ruta para esta pantalla
 type DetalleScreenRouteProp = RouteProp<RootStackParamList, 'Detalle'>;
@@ -100,15 +101,13 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
         <Image source={require('../../assets/white-arrow-invertida.png')} style={styles.backIcon} />
       </TouchableOpacity>
 
-      {/* Video de fondo */}
-      <Video
-        ref={videoRef}
-        source={require('../../assets/background-video-splash.mp4')}
-        style={styles.video}
-        resizeMode={ResizeMode.COVER}
-        shouldPlay
-        isMuted
-        isLooping
+      {/* Reproductor de YouTube */}
+      <YoutubePlayer
+        height={250}
+        play={true}
+        videoId={elemento.source} // Asegúrate que 'elemento.source' contenga el ID del video de YouTube
+        onChangeState={event => console.log(event)}
+        onReady={() => console.log("El video de YouTube está listo")}
       />
 
       {/* Imagen de perfil e icono de corazón */}

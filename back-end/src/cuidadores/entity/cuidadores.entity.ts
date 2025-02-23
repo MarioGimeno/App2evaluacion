@@ -49,6 +49,10 @@ export class Cuidador {
   @Column({ nullable: true })
   horarioAtencion: string;
 
+  // Nueva columna para almacenar el ID o la URL del video de YouTube
+  @Column({ nullable: true })
+  source: string;
+
   @ManyToMany(() => Categoria, categoria => categoria.cuidadores, { cascade: true })
   @JoinTable({
     name: 'cuidador_categoria',

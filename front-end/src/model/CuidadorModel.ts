@@ -20,4 +20,5 @@ export interface CuidadorModel {
   categorias: CategoriaModel[];
   dias: DiaSemanaModel[];
   resenas: ResenasModel[],
+  source: string,
 }
