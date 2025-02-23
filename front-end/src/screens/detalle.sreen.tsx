@@ -16,13 +16,12 @@ import { ResizeMode, Video } from 'expo-av';
 import { useAuth } from '../../src/auth/AuthContext';
 import { useResenaPresenter } from '../presenter/ResenaPresenter';
 import YoutubePlayer from 'react-native-youtube-iframe';
-
-// Declaramos el tipo de la ruta para esta pantalla
-type DetalleScreenRouteProp = RouteProp<RootStackParamList, 'Detalle'>;
-
 // Tipamos la navegación para esta pantalla
 import { StackNavigationProp } from '@react-navigation/stack';
 import LazyYoutubePlayer from '../componentes/LazyYoutubePlayer';
+
+// Declaramos el tipo de la ruta para esta pantalla
+type DetalleScreenRouteProp = RouteProp<RootStackParamList, 'Detalle'>;
 type DetalleScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Detalle'>;
 
 type Props = {
