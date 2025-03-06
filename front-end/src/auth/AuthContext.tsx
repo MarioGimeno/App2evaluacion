@@ -21,8 +21,15 @@ const AuthContext = createContext<AuthContextData>({
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+
+  // Función envolvente para loguear los valores que se setean
+  const handleSetUser = (user: User | null) => {
+    console.log('Seteando usuario:', user);
+    setUser(user);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser: handleSetUser }}>
       {children}
     </AuthContext.Provider>
   );

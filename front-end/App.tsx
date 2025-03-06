@@ -2,9 +2,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ListadoScreen from './src/screens/listado.screen';
-import DetalleScreen from './src/screens/detalle.sreen';
-import LoginScreen from './src/screens/login.screen';
+import ListadoScreen from './src/screens/ListadoScreen';
+import DetalleScreen from './src/screens/DetalleScreen';
+import LoginScreen from './src/screens/LoginScreen';
 import SplashScreen from './src/screens/SplashScreen';
 import RegistroScreen from './src/screens/RegistroScreen'; // Importa la pantalla de registro
 import { CuidadorModel } from '../front-end/src/model/CuidadorModel';

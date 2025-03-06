@@ -56,13 +56,19 @@ export const useRegistroPresenter = (navigation: RegistroScreenNavigationProp) =
         type,
       } as any);
     }
-  
+
     try {
-      const response = await fetch('http://192.168.1.140:3000/usuarios/registro', {
+      const response = await fetch('http://172.22.2.1:3000/usuarios/registro', {
         method: 'POST',
         body: formData,
         // Quita el header 'Content-Type' para FormData en React Native
       });
+
+      if (!response.ok) {
+        // Si la respuesta no es exitosa, lanza un error para entrar en el catch
+        throw new Error('Error en la solicitud de registro');
+      }
+
       const data = await response.json();
       console.log('Registro exitoso:', data);
       // Actualiza el contexto con el usuario logueado
@@ -70,9 +76,10 @@ export const useRegistroPresenter = (navigation: RegistroScreenNavigationProp) =
       navigation.navigate('Listado');
     } catch (error) {
       console.error('Error al registrar:', error);
+      alert('Ha ocurrido un error durante el registro. Por favor, inténtalo de nuevo.');
     }
   };
-  
+
   return {
     registroData,
     setField,

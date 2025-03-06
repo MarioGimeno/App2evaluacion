@@ -134,6 +134,7 @@ const ContratarScreen: React.FC<Props> = ({ route }) => {
   }, [startTime, endTime, currentCuidador, selectedDays]);
 
   const onAccept = () => {
+    console.log('Enviando contratacion');
     if (totalPrice <= 0) {
       Alert.alert("Faltan datos", "Por favor, selecciona al menos un día y un horario válido.");
       return;

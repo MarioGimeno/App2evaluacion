@@ -30,6 +30,7 @@ export class ResenaController {
   @Post()
   create(@Body() payload: ResenaCreateDTO) {
     this.logger.log('Creando nueva resena ' + payload.cuidadorId);
+    this.logger.log('Creando nueva resena ' + payload.usuarioId);
     return this.resenaService.create(payload);
   }
 

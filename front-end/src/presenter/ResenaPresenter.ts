@@ -28,7 +28,7 @@ export const useResenaPresenter = (navigation: DetalleScreenNavigationProp) => {
 
   const loadResenas = async (cuidadorId: number) => {
     try {
-      const response = await fetch(`http://192.168.1.140:3000/resena/cuidador/${cuidadorId}`);
+      const response = await fetch(`http://172.22.2.1:3000/resena/cuidador/${cuidadorId}`);
       const resenas = await response.json();
       if (!response.ok) {
         console.error('Error al cargar reseñas:', resenas.message);
@@ -40,29 +40,28 @@ export const useResenaPresenter = (navigation: DetalleScreenNavigationProp) => {
       console.error('Error en la comunicación con el backend al cargar reseñas:', error);
     }
   };
-
-  const handleSubmitResena = async () => {
+  const handleSubmitResena = async (dataToSend: ResenaData) => {
+    console.log('reseña data ' + dataToSend.usuarioId);
     try {
-      const response = await fetch('http://192.168.1.140:3000/resena', {
+      const response = await fetch('http://172.22.2.1:3000/resena', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(resenaData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend),
       });
       const data = await response.json();
       if (!response.ok) {
         console.error('Error al enviar reseña:', data.message);
-        return false;  // Devuelve false si la respuesta no fue exitosa
+        return false;
       } else {
         console.log('Reseña enviada exitosamente:', data);
-        return true;  // Devuelve true si la reseña fue enviada correctamente
+        return true;
       }
     } catch (error) {
       console.error('Error en la comunicación con el backend:', error);
-      return false;  // Devuelve false si ocurrió un error al enviar la reseña
+      return false;
     }
   };
+  
 
   return { resenaData, setField, handleSubmitResena, loadResenas };
 };

@@ -83,6 +83,7 @@ export class UsersService {
     if (!user) {
       throw new UnauthorizedException('Credenciales inválidas');
     }
+    this.logger.log(`Usuario logeado exitosamente: ${JSON.stringify(user)}`);
     return user;
   }
   

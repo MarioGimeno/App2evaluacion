@@ -20,7 +20,7 @@ const HistorialScreen: React.FC = () => {
     const fetchContracts = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://192.168.1.140:3000/contrataciones/usuario/${user.id}`);
+        const response = await fetch(`http://172.22.2.1:3000/contrataciones/usuario/${user.id}`);
         const data = await response.json();
         setContracts(data);
       } catch (error) {
@@ -78,6 +78,7 @@ const HistorialScreen: React.FC = () => {
           data={contracts}
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.listContent}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => {
             const formattedStartTime = new Date(item.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             const formattedEndTime = new Date(item.endTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });

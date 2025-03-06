@@ -58,7 +58,7 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
   // Función para cargar las reseñas y actualizar el estado local
   const fetchResenas = async (cuidadorId: number) => {
     try {
-      const response = await fetch(`http://192.168.1.140:3000/resena/cuidador/${cuidadorId}`);
+      const response = await fetch(`http://172.22.2.1:3000/resena/cuidador/${cuidadorId}`);
       const data = await response.json();
       console.log('Reseñas cargadas exitosamente:', data);
       setResenas(data);
@@ -79,21 +79,22 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
       navigation.navigate('Login');
       return;
     }
-    // Aseguramos que el cuidadorId y usuarioId estén actualizados
     if (elemento.id) {
       setField('cuidadorId', elemento.id);
     }
     console.log('uSER ID ' + user.id);
     setField('usuarioId', user.id);
-    const success = await handleSubmitResena();
+  
+    // Crea un objeto con los datos actualizados
+    const dataToSend = { ...resenaData, usuarioId: user.id, cuidadorId: elemento.id };
+  
+    // Llama a una versión modificada de handleSubmitResena que acepte los datos directamente
+    const success = await handleSubmitResena(dataToSend);
     if (success) {
-      // Vuelve a cargar las reseñas para mostrar la recién agregada
       fetchResenas(elemento.id);
-    } else {
-      // Manejar error de envío aquí, si es necesario
     }
   };
-
+  
   return (
     <ScrollView style={styles.container}>
       {/* Botón de volver */}
