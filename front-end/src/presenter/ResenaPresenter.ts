@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
+import { ipFetch } from '../../config';
 
 export interface ResenaData {
   cuidadorId: number;
@@ -28,7 +29,7 @@ export const useResenaPresenter = (navigation: DetalleScreenNavigationProp) => {
 
   const loadResenas = async (cuidadorId: number) => {
     try {
-      const response = await fetch(`http://172.22.2.1:3000/resena/cuidador/${cuidadorId}`);
+      const response = await fetch(`http://${ipFetch}:3000/resena/cuidador/${cuidadorId}`);
       const resenas = await response.json();
       if (!response.ok) {
         console.error('Error al cargar reseñas:', resenas.message);
@@ -43,7 +44,7 @@ export const useResenaPresenter = (navigation: DetalleScreenNavigationProp) => {
   const handleSubmitResena = async (dataToSend: ResenaData) => {
     console.log('reseña data ' + dataToSend.usuarioId);
     try {
-      const response = await fetch('http://172.22.2.1:3000/resena', {
+      const response = await fetch(`http://${ipFetch}:3000/resena`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend),

@@ -19,6 +19,7 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 // Tipamos la navegación para esta pantalla
 import { StackNavigationProp } from '@react-navigation/stack';
 import LazyYoutubePlayer from '../componentes/LazyYoutubePlayer';
+import { ipFetch } from '../../config';
 
 // Declaramos el tipo de la ruta para esta pantalla
 type DetalleScreenRouteProp = RouteProp<RootStackParamList, 'Detalle'>;
@@ -36,6 +37,7 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
   // Obtén navigation tipado dentro del componente
   const navigation = useNavigation<DetalleScreenNavigationProp>();
   const { user } = useAuth();
+  const [isFavorite, setIsFavorite] = useState(false);
 
   // Estado para guardar las reseñas actualizadas
   const [resenas, setResenas] = useState<any[]>(elemento.resenas || []);
@@ -58,7 +60,7 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
   // Función para cargar las reseñas y actualizar el estado local
   const fetchResenas = async (cuidadorId: number) => {
     try {
-      const response = await fetch(`http://172.22.2.1:3000/resena/cuidador/${cuidadorId}`);
+      const response = await fetch(`http://${ipFetch}:3000/resena/cuidador/${cuidadorId}`);
       const data = await response.json();
       console.log('Reseñas cargadas exitosamente:', data);
       setResenas(data);
@@ -106,11 +108,22 @@ const DetalleScreen: React.FC<Props> = ({ route }) => {
 
       {/* Imagen de perfil e icono de corazón */}
       <View style={styles.profileRow}>
-        <Image source={{ uri: elemento.urlImagen }} style={styles.profileImage} />
-        <View style={styles.heartIconContainer}>
-          <Image source={require('../../assets/heart.png')} style={styles.heartIcon} />
-        </View>
-      </View>
+  <Image source={{ uri: elemento.urlImagen }} style={styles.profileImage} />
+  <TouchableOpacity
+    style={[styles.heartIconContainer, isFavorite && styles.favoriteBackground]}
+    onPress={() => setIsFavorite(!isFavorite)}
+  >
+    <Image
+      source={
+        isFavorite
+          ? require('../../assets/white-heart.png')
+          : require('../../assets/heart.png')
+      }
+      style={styles.heartIcon}
+    />
+  </TouchableOpacity>
+</View>
+
 
       {/* Datos del cuidador */}
       <View style={styles.textContainer}>
@@ -326,9 +339,10 @@ const styles = StyleSheet.create({
   },
   commentItem: {
     flexDirection: 'row',
-    marginBottom: 15,
+    marginVertical: 10, // Aplica 10 unidades de margen arriba y abajo
     alignItems: 'flex-start',
-    height: 80,
+    // Puedes quitar el height fijo si no es necesario, para que se adapte al contenido:
+    // height: 80,
   },
   commentUserImage: {
     marginTop: 15,
@@ -394,5 +408,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#fff',
     fontWeight: 'bold',
+  },
+  favoriteBackground: {
+    backgroundColor: '#ff9900', // naranja que usamos siempre
   },
 });

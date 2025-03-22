@@ -4,6 +4,7 @@ import { Alert } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
 import { useAuth } from '../auth/AuthContext';
+import { ipFetch } from '../../config';
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -15,7 +16,7 @@ export const useLoginPresenter = (navigation: LoginScreenNavigationProp) => {
   const handleLogin = async () => {
     try {
       // Realiza la llamada a la API de login
-      const response = await fetch('http://172.22.2.1:3000/usuarios/login', {
+      const response = await fetch(`http://${ipFetch}:3000/usuarios/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

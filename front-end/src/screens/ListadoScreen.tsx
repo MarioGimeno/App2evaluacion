@@ -196,8 +196,12 @@
         : undefined;
 
     // Para "Más populares": ordenamos por rating descendente
-    const popularCuidadores = cuidadores;
-    console.log('CUIDADORES POPULARES:' +popularCuidadores)
+    const popularCuidadores = [...cuidadores].sort((a, b) => {
+      if (a.nombre === 'Laura Gimeno Rodriguez') return -1;
+      if (b.nombre === 'Laura Gimeno Rodriguez') return 1;
+      return b.rating - a.rating;
+    });
+        console.log('CUIDADORES POPULARES:' +popularCuidadores)
     const onMomentumScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       const index = Math.round(event.nativeEvent.contentOffset.x / width);
       setActiveIndex(index);

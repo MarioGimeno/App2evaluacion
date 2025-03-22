@@ -5,6 +5,7 @@ import { useAuth } from '../auth/AuthContext';
 import { RootStackParamList } from '../../App';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { deleteContratacion } from '../presenter/ContratacionPresenter';
+import { ipFetch } from '../../config';
 
 const HistorialScreen: React.FC = () => {
   const { user } = useAuth();
@@ -20,7 +21,7 @@ const HistorialScreen: React.FC = () => {
     const fetchContracts = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://172.22.2.1:3000/contrataciones/usuario/${user.id}`);
+        const response = await fetch(`http://${ipFetch}:3000/contrataciones/usuario/${user.id}`);
         const data = await response.json();
         setContracts(data);
       } catch (error) {

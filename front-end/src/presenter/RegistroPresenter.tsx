@@ -5,6 +5,7 @@ import { RegistroData } from '../model/RegistroModel';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
 import { useAuth } from '../auth/AuthContext'; // Asegúrate de la ruta correcta
+import { ipFetch } from '../../config';
 
 type RegistroScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Registro'>;
 
@@ -58,7 +59,7 @@ export const useRegistroPresenter = (navigation: RegistroScreenNavigationProp) =
     }
 
     try {
-      const response = await fetch('http://172.22.2.1:3000/usuarios/registro', {
+      const response = await fetch(`http://${ipFetch}:3000/usuarios/registro`, {
         method: 'POST',
         body: formData,
         // Quita el header 'Content-Type' para FormData en React Native

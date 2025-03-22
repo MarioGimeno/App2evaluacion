@@ -2,6 +2,7 @@
 import { Alert } from 'react-native';
 import { CuidadorModel } from '../model/CuidadorModel'; // Define un DTO o usa la interfaz que prefieras
 import { CategoriaModel } from "../model/CategoriaModel";
+import { ipFetch } from '../../config';
 
 /**
  * Presentador para el listado de elementos.
@@ -13,7 +14,10 @@ export class ListadoPresenter {
    */
   fetchCuidadores = async (): Promise<CuidadorModel[]> => {
     try {
-      const response = await fetch('http://172.22.2.1:3000/cuidadores');
+      console.log(ipFetch);
+      const response = await fetch(`http://${ipFetch}:3000/cuidadores`);
+      console.log(`http://${ipFetch}:3000/cuidadores`);
+
       const data = await response.json();
       return data;
     } catch (error) {
@@ -25,7 +29,7 @@ export class ListadoPresenter {
 
   async fetchCategorias(): Promise<CategoriaModel[]> {
     try {
-      const response = await fetch('http://172.22.2.1:3000/categoria');
+      const response = await fetch(`http://${ipFetch}:3000/categoria`);
       const data = await response.json();
       return data;
     } catch (error) {
